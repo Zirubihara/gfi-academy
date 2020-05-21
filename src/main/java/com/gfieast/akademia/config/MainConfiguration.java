@@ -4,12 +4,13 @@ import com.gfieast.akademia.service.NoteService;
 import com.gfieast.akademia.service.OtherService;
 import com.gfieast.akademia.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.h2.engine.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @Slf4j
+@EnableSwagger2
 public class MainConfiguration {
 
     @Bean

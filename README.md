@@ -163,3 +163,14 @@ W klasie `UserController` dodaj odpowiednie adnotacje i 2 metody odpowiadające 
 - Wiadomośc w odpowiedzi ma zawierać słowo "PRINTED"
 
 Jeśli ukończyłeś zadanie pobierz branch **zadanie6**
+
+**Zadanie 6. : Zapoznanie z swagger-ui**
+
+Swagger to biblioteka, która pozwala na dokumentowanie API co sprawdza się w pracach między zespołami.
+Więcej informacji znajdziesz na https://swagger.io/
+W tym zadaniu zapoznamy się tylko z interfejsem, które dostarcza biblioteka **swagger-ui**
+
+Uruchom aplikację i przejdź na adres:
+
+http://localhost:8080/swagger-ui.html
+
