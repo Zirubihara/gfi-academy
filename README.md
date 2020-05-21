@@ -101,3 +101,37 @@ Czy w projekcie pojawił się nowy plik o nazwie `logFile.log`?
 Sprawdź zawartość pliku `logging.xml` w katalogu resources.
 
 Pobierz branch **zadanie4**
+
+**Zadanie 4. : Adnotacje springa, beany i kontener IoC**
+
+Kontener IoC (eng. Inversion of Controll) pozwala na definiowanie klas i używanie ich obiektów bez myślenia o ich inicjalizacji.
+
+W większości przypadków nie będziemy nigdzie korzystać ze słowa kluczowego **new**
+
+**@Configuration** wskazuje klasę konfiguracji, która powinna definiować przynajmniej jeden bean.
+
+Czym jest bean? To obiekt zarządzany przez Spring Framework. Jest to instancja klasy.
+
+**@Bean** adnotacja nad metodą, która definiuje nowego beana.
+
+**@Service, @Controller, @Repository** - adnotacje nad klasą, prototypy logiczne, spełniają tą samą funkcję, wskazują aby utworzyć bean-a na podstawie tej klasy
+
+**@Autowired** - może być użyty nad polem, metodą (setter), konstruktorem (zalecane), wskazuje, gdzie należy wstrzyknąć bean-a.
+
+**Do poczytania**:
+ - zakresy beanów - bean scopes (singleton - domyślny, prototype) oraz (request, session)
+ - zasady wstrzykiwania (po typie, po nazwie, po qualifier) - @Qualifier oraz @Bean(name="")
+ 
+Ćwiczenie.
+
+Używając adnotacji @Autowired i @Service zainicjalizuj klasę `OtherService` tak, aby w konsoli pojawiło się drukowanie imiona z klasy `UserService`
+
+Używając adnotacji @Bean zainicjalizuj w klasie `MainConfiguration` drugą instancję serwisu `OtherService`.
+
+Jeśli w logu konsoli posiadasz dwa razy wpis:
+```
+===== Printing name in UserService.
+===== Name is: NAME FROM NOTE
+```
+
+pobierz branch **zadanie5**
