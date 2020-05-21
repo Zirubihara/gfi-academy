@@ -16,4 +16,14 @@ public class MainConfiguration {
     UserService userService(NoteService noteService) {
         return new UserService(noteService);
     }
+
+    @Bean(name="otherService2")
+    OtherService otherService(NoteService noteService, UserService userService) {
+        return new OtherService(noteService, userService);
+    }
+
+//    @Bean
+//    OtherService otherService2(NoteService noteService, UserService userService) {
+//        return new OtherService(noteService, userService);
+//    }
 }

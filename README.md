@@ -135,3 +135,31 @@ Jeśli w logu konsoli posiadasz dwa razy wpis:
 ```
 
 pobierz branch **zadanie5**
+
+**Zadanie 5. : @RestController, @RequestMapping, @GetMapping, parametry**
+
+Adnotacja @RestController pochodzi z `spring-boot-starter-web`.
+Biblioteka zawiera wbudowany serwer tomcat. Jest to serwer z kontenerem servletów.
+Dodatkowo wprowadza wszystkie konfiguracje wymagane, do wystawienia kontrolera REST.
+
+Klasa `ExampleServlet` pokazuje przykład inicjalizowania servletu java. 
+Nie będzie on działać przy obecnej konfiguracji.
+Ma zadanie zaprezentować implementację servletu od podstaw.
+
+Ćwiczenie
+Uruchom aplikację i w przeglądarce otwórz link:
+http://localhost:8080/note
+Teraz otwórz link
+http://localhost:8080/note/TUTAJ_TWÓJ_PARAMETR
+
+W klasie `UserController` dodaj odpowiednie adnotacje i 2 metody odpowiadające na żądania GET
+- Pierwsza metoda ma odpowiadać pod URI `/user` i zwracać listę osób (jako typ zwracany ustaw List<String>)
+- Druga metoda ma odpowiadać pod URI `/user/{PARAM_TEXT}/{PARAM_NUMBER}` i zwracać typ `ResponseEntity<String>`:
+- Pierwszy parametr ma być typu String.
+- Drugi parametr ma być typu Long.
+- Po wywołaniu w logach konsoli ma pojawić się przesłany text i liczba.
+- Log ma być wpisany z poziomem ERROR
+- Odpowiedź HTTP ma mieć kod 201 (patrz metody klasy ResponseEntity)
+- Wiadomośc w odpowiedzi ma zawierać słowo "PRINTED"
+
+Jeśli ukończyłeś zadanie pobierz branch **zadanie6**
