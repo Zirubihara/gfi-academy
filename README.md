@@ -40,3 +40,33 @@ Jeśli przeglądarka wyświetla wiadomość w formacie JSON o treści:
 Zatrzymaj aplikację `MyNoteApp`.
 Możesz przejść do kolejnego zadania.
 Pobierz branch **zadanie2**.
+
+**Zadanie 2. : Zmiana property, definiowanie własnych property, odczyt wartości przez adnotacje @Value**
+
+Domyślnym plikiem wczytywanym przez framework SpringBoot jest **application.properties** z katalogu resources.
+Więcej o kolejności ładowania konfiguracji znajdziesz pod linkiem: https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-external-config.html
+
+Wyłącz logo spring które wyświetlane jest w konsoli logów.
+
+Property `spring.main.banner-mode` musi mieć wartość `off`
+
+Uruchom aplikację i sprawdź czy banner spring został wyłączony.
+
+Zmień wartości custom properties, które są wyświetlane w konsoli jak poniżej:
+
+`+++++ Custom String value = [default] +++++`
+
+`+++++ Custom Long value = [0] +++++`
+ 
+Ustaw wartości property w pliku application.properties:
+ - `custom.string`
+ - `custom.long`
+ 
+Twoje wartości powinny pojawić się w konsoli.
+
+Sprawdź co się stanie jeśli pod wartość liczbową podstawisz wartość, która nie jest liczbą całkowitą.
+
+Sprawdź co się stanie jeśli property nie będzie ustawione w pliku application.properties oraz w pliku **MainConfiguration**
+wartość adnotacji `@Value("${custom.string:default}")` zmienisz do `@Value("${custom.string}")`
+
+Pobierz branch **zadanie3**
