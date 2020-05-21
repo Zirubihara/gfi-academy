@@ -70,3 +70,34 @@ Sprawdź co się stanie jeśli property nie będzie ustawione w pliku applicatio
 wartość adnotacji `@Value("${custom.string:default}")` zmienisz do `@Value("${custom.string}")`
 
 Pobierz branch **zadanie3**
+
+**Zadanie 3. : Ustawienia logów, logback - plik konfiguracyjny**
+
+Zapoznaj się z poniższą tabelką poziomów logowania
+
+![Import Maven](./img/logLevel.png)
+
+SpringBoot dostarcza biblioteki potrzebne do używania loggerów, a Lombok skraca dodawanie logger do dodania adnotacji nad klasą.
+
+`Logger log = LoggerFactory.getLogger(MainConfiguration.class);`
+
+można zastąpić
+
+`@Slf4j`
+
+Aby zmienić poziom logowania z poziomu property wystarczy dodać wpis:
+`logging.level.nazwa_logger=POZIOM_LOGOWANIA`
+
+Poziom logowania można wybrać zgodnie z tabelką.
+
+Użycie logów znajdziesz w klasie **MainConfiguration**
+
+W pliku **application.properties** zmień poziom logowania
+`logging.level.myLogger` na DEBUG i uruchom/zerestartuj aplikację. Obserwuj logi konsoli.
+
+Odkomentuj linię `logging.config=classpath:./logging.xml` i zrestartuj aplikację.
+Czy w projekcie pojawił się nowy plik o nazwie `logFile.log`?
+
+Sprawdź zawartość pliku `logging.xml` w katalogu resources.
+
+Pobierz branch **zadanie4**
