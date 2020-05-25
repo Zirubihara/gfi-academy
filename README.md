@@ -174,3 +174,36 @@ Uruchom aplikację i przejdź na adres:
 
 http://localhost:8080/swagger-ui.html
 
+Jeśli ukończyłeś zadanie pobierz branch **zadanie7**
+
+**Zadanie 7. : Zapoznanie z klasą encji i konsolą bazy danych**
+
+Zależność
+```
+   <dependency>
+       <groupId>com.h2database</groupId>
+       <artifactId>h2</artifactId>
+   </dependency>
+```
+dostarcza sterownik i silnik bazy danych H2. Baza ta zapisuje dane w pamięci operacyjnej lub w pliku.
+Baza danych zazwyczaj jest dodawana ze scope **test**, ponieważ wykorzystywana jest przy testowaniu aplikacji.
+Na potrzeby szkolenia dodana została z domyślnym scope **compile**. Oznacza to, że biblioteki zostaną dołączone
+do classpath.
+Pozwoli to na wykorzystanie bazy w naszej testowej aplikacji bez konieczności wykorzystania zewnętrznego silnika bazodanowego.
+
+Sprawdź zawrtość pliku **application.propeties** i zapoznaj się z opisem ustawień.
+
+Uruchom aplikację i przejdź do przeglądarki pod adres:
+
+http://localhost:8080/h2
+
+Zaloguj się do konsoli wykorzystując wartości property z pliku **application.properties**
+
+Wykonaj zapytanie o dane z tabeli **TEST**
+
+`SELECT * FROM TEST`
+
+Jeśli wyświetliła się tabela z danymi, zadanie zostało wykoanne.
+Pobierz branch **zadanie8**
+
+
