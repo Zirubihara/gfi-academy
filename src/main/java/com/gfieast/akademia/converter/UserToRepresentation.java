@@ -5,7 +5,8 @@ import com.gfieast.akademia.representation.UserRepresentation;
 
 public class UserToRepresentation {
 
-    private UserToRepresentation() {}
+    private UserToRepresentation() {
+    }
 
     public static UserRepresentation convert(User source) {
         return UserRepresentation.builder()

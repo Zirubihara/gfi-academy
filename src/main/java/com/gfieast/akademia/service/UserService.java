@@ -27,15 +27,54 @@ public class UserService {
     }
 
     public List<UserRepresentation> getAllUsers() {
-        return userRepository.findAll().stream().map(UserToRepresentation::convert).collect(Collectors.toList());
+        return userRepository.findAll()
+                .stream()
+                .map(UserToRepresentation::convert)
+                .collect(Collectors.toList());
     }
 
-    public UserWithNotesRepresentation getUserById(Long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        UserWithNotesRepresentation userWithNotesRepresentation = user.map(UserToUserWithNoteRepresentation::convert).orElseThrow(() -> new UserNotFoundException(userId));
-        userWithNotesRepresentation.setNotes(noteRepository.findAllByUserId(userWithNotesRepresentation.getId()).stream().map(NoteToRepresentation::convert).collect(Collectors.toList()));
+    public Optional<UserWithNotesRepresentation> getUserById(Long userId) {
+        Optional<UserWithNotesRepresentation> user = userRepository.findById(userId).map(UserToUserWithNoteRepresentation::convert);
+        user.ifPresent(userRepresentation ->
+                userRepresentation.setNotes(noteRepository.findAllByUserId(userId)
+                        .stream()
+                        .map(NoteToRepresentation::convert)
+                        .collect(Collectors.toList())));
+        return user;
+    }
 
-        return userWithNotesRepresentation;
+    public UserRepresentation addUser(UserRepresentation user) {
+        return UserToRepresentation.convert(userRepository.save(mapToUser(user)));
+    }
+
+    public UserRepresentation updateUser(UserRepresentation user) {
+        Optional<User> optionalUser = userRepository.findById(user.getId());
+        User dbUser = optionalUser.orElseThrow(() -> new UserNotFoundException(user.getId()));
+        dbUser.setLogin(user.getLogin());
+        dbUser.setFullName(user.getFullName());
+
+        return user;
+    }
+
+    public UserWithNotesRepresentation deleteUser(Long userId) {
+        User dbUser = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        noteRepository.deleteAll(noteRepository.findAllByUserId(userId));
+        userRepository.deleteById(userId);
+        return UserToUserWithNoteRepresentation.convert(dbUser);
+    }
+
+    private User mapToUser(UserWithNotesRepresentation source) {
+        return User.builder()
+                .login(source.getLogin())
+                .fullName(source.getFullName())
+                .build();
+    }
+
+    private User mapToUser(UserRepresentation source) {
+        return User.builder()
+                .login(source.getLogin())
+                .fullName(source.getFullName())
+                .build();
     }
 
 }

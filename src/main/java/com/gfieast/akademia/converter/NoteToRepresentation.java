@@ -7,7 +7,8 @@ import static com.gfieast.akademia.util.DateTimeUtil.toLocalDateTime;
 
 public class NoteToRepresentation {
 
-    private NoteToRepresentation() {}
+    private NoteToRepresentation() {
+    }
 
     public static NoteRepresentation convert(Note source) {
         return NoteRepresentation.builder()
