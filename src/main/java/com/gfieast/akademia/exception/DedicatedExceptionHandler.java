@@ -22,4 +22,13 @@ public class DedicatedExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
+    @ExceptionHandler(NoteNotFoundException.class)
+    @ResponseBody
+    public ResponseEntity<String> handleGenericException(
+            HttpServletRequest request, NoteNotFoundException exception) {
+        log.warn("Request URI: {}", request.getRequestURI());
+        log.warn("Exception message: {}", exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
 }

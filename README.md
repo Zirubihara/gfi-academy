@@ -294,3 +294,39 @@ Sprawdź logi konsoli.
 Dopisz brakującą obsługę wyjątku `NoteNotFoundException` w klasie `DedicatedExceptionHandler`.
 
 Pobierz branch **zadanie11**
+
+**Zadanie 11. : Mapowanie obiektów**
+
+Pobierając obiekty notatek poprzez REST API pobierane są dane o użytkownikach, do których przypisane są notatki.
+
+```$json
+{
+  "id": 1,
+  "title": "Sterowanie lądownikiem",
+  "importance": "HIGH",
+  "text": "Rozdział 8 w podręczniku pilota zawiera informacje na temat sterowania lądownikiem",
+  "creationDate": "2020-04-20T18:57:32.892075Z",
+  "modificationDate": "2020-04-20T18:57:32.892075Z",
+  "user": {
+    "id": 1,
+    "login": "armn",
+    "fullName": "NeilArmstrong"
+  }
+}
+```
+
+Dodatkowo data podawana jest w formacie ISO 8601 z czasem w strefie UTC.
+
+Aby zapanować nad danymi pobieranymi przez API REST warto używać klas reprezentacji.
+
+Ćwiczenie.
+
+- Uruchom aplikację.
+- Z poziomu swagger-ui pobierz notatki i użytkowników.
+- Wczytaj pojedynczego użytkownika
+- Sprawdź modele reprezentacji i sposoby mapowania.
+- Zwróć uwagę na adnotacje `@JsonIgnore` i `@JsonFormat`w klasie `NoteRepresentation
+- Zwróć uwagę na wykorzystanie biblioteki orika do mapowania obiektu w klasie `UserToUserWithNoteRepresentation`
+- Więcej o bibliotece orika znajdziesz na https://github.com/orika-mapper/orika i http://orika-mapper.github.io/orika-docs/
+
+Pobierz branch **zadanie12** 

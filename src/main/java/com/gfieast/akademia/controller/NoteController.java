@@ -2,7 +2,7 @@ package com.gfieast.akademia.controller;
 
 import java.util.List;
 
-import com.gfieast.akademia.model.Note;
+import com.gfieast.akademia.representation.NoteRepresentation;
 import com.gfieast.akademia.service.NoteService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +22,12 @@ public class NoteController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    ResponseEntity<List<Note>> getAllNotes() {
+    ResponseEntity<List<NoteRepresentation>> getAllNotes() {
         return ResponseEntity.ok(noteService.getAll());
     }
 
     @GetMapping(path = "/{noteId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    ResponseEntity<Note> getNoteById(@PathVariable Long noteId) {
+    ResponseEntity<NoteRepresentation> getNoteById(@PathVariable Long noteId) {
         return ResponseEntity.ok(noteService.getNoteById(noteId));
     }
 
