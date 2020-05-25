@@ -176,7 +176,7 @@ http://localhost:8080/swagger-ui.html
 
 Jeśli ukończyłeś zadanie pobierz branch **zadanie7**
 
-**Zadanie 7. : Zapoznanie z klasą encji i konsolą bazy danych**
+**Zadanie 7. : Zapoznanie z konsolą bazy danych**
 
 Zależność
 ```
@@ -206,4 +206,26 @@ Wykonaj zapytanie o dane z tabeli **TEST**
 Jeśli wyświetliła się tabela z danymi, zadanie zostało wykoanne.
 Pobierz branch **zadanie8**
 
+**Zadanie 8. : Klasa encji i testowe dane**
 
+Dane początkowe ładowane są z pliku data.sql.
+Wykorzystują one model bazodanowy, który tworzony jest przez Spring Data.
+
+Sprawdź klasę `Note` i zapoznaj się z adnotacjami stosowanymi w klasie encji.
+Jeśli znasz składnie SQL, możesz także spojrzeć do pliku `data.sql`
+
+Bazując na klasie `Note` i dodaj konfigurację do klasy encji `User`, aby aplikacja uruchomiła się poprawnie.
+
+Poniższe informacje będą pomocne:
+- Klasa `User` odpowiada tabeli `USER_TABLE`
+- pole login odpowiadać powinno kolumnie `USER_LOGIN`
+- kolumna `USER_LOGIN` powinna mieć unikalną wartość, nie może przyjmować wartości NULL, wartość może mieć maksymalnie 50 znaków.
+- pole fullName odpowiada kolumnie `FULLNAME`, nie może przyjmować wartości NULL, wartość może mieć maksymalnie 200 znaków.
+
+Z poziomu konsoli h2 powinno to wyglądać następująco:
+![User Table](./img/user_table.png)
+FULLNAME - VARCHAR(200) NOT NULL
+USER_LOGIN - VARCHAR(50) NOT NULL
+Indexes powinno zawierać indeks UNIQUE na polu USER_LOGIN
+
+Po ukończeniu zadania pobierz branch **zadanie9**
