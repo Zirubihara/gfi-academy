@@ -229,3 +229,50 @@ USER_LOGIN - VARCHAR(50) NOT NULL
 Indexes powinno zawierać indeks UNIQUE na polu USER_LOGIN
 
 Po ukończeniu zadania pobierz branch **zadanie9**
+
+**Zadanie 9. : Repozytorium JPA**
+
+Spring Data w wysokim stopniu upraszcza pisanie repozytoriów pobierających dane z bazy.
+Wystarczy, aby interfejs reprezentujący nowe repozytorium rozszerzał interfejs `org.springframework.data.jpa.repository.JpaRepository<T, ID>`.
+Oto zestaw metod które dostarcza JpaRepository
+```
+    List<T> findAll();
+    List<T> findAll(Sort var1);
+    List<T> findAllById(Iterable<ID> var1);
+    <S extends T> List<S> saveAll(Iterable<S> var1);
+    void flush();
+    <S extends T> S saveAndFlush(S var1);
+    void deleteInBatch(Iterable<T> var1);
+    void deleteAllInBatch();
+    T getOne(ID var1);
+    <S extends T> List<S> findAll(Example<S> var1);
+    <S extends T> List<S> findAll(Example<S> var1, Sort var2);
+```
+T - klasa encji
+
+ID - klasa atrybutu identyfikatora encji
+
+Spring zajmie się resztą: 
+ - Utworzy bean repozytorium. 
+ - Odpowie za generowanie zapytań do bazy danych.
+ - Utworzenie puli połączeń do bazy danych (domyślnie wykorzystując HikariCP)
+ - Mapowanie obiektów bazodanowych na obiekty klasy encji.
+
+W przypadku utworzenia zapytań z parametrami `where` (wybór rekordów na podstawie wartości pola) lub `order` (sortowanie pobranych obiektów),
+wystarczy dodać w repozytorium deklarację metody wg schematu:
+
+`[List|Optional]<T> find[All]ByNazwaAtrybutu[[And|Or]NazwaKolejnegoAtrybuty][OrderByNazwaAtrybuty](Parametry...)`
+
+np. wyszukując użytkowników których login rozpoczyna się od zadanego ciągu znaków i posortowanych po id deklarujemy metodę:
+
+`List<User> findAllByLoginStartsWithOrderByIdAsc(String login)` 
+
+Ćwiczenie.
+
+Uzupełnij interfejes `UserRepository` tak, aby deklarował bean repozytorium encji `User`
+Napisz deklarację metody w klasie `NoteRepository`, aby pobierała notatki użytkownika o podanym `userId`.
+Dopisz w klasie `NoteController` brakującą adnotację i wywołanie nowej metody z `NoteRepository`.
+
+Sprawdź z poziomu swagger-ui poprawność działania kontrolerów.
+
+Pobierz branch **zadanie10**

@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
+@Table(name = "USER_TABLE")
 @EqualsAndHashCode
 public class User {
 
@@ -22,9 +22,9 @@ public class User {
     @Column(name = "ID", nullable = false, unique = true)
     private Long id;
 
-
+    @Column(name = "USER_LOGIN", nullable = false, length = 50, unique = true)
     private String login;
 
-
+    @Column(name = "FULLNAME", nullable = false, length = 200)
     private String fullName;
 }
