@@ -3,7 +3,7 @@ package com.gfieast.akademia.controller;
 import java.util.List;
 
 import com.gfieast.akademia.model.Note;
-import com.gfieast.akademia.repository.NoteRepository;
+import com.gfieast.akademia.service.NoteService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/note")
 public class NoteController {
 
-    private final NoteRepository noteRepository;
+    private final NoteService noteService;
 
-    public NoteController(NoteRepository noteRepository) {
-        this.noteRepository = noteRepository;
+    public NoteController(NoteService noteService) {
+        this.noteService = noteService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     ResponseEntity<List<Note>> getAllNotes() {
-        return ResponseEntity.ok(noteRepository.findAll());
+        return ResponseEntity.ok(noteService.getAll());
     }
 
-
-    ResponseEntity<List<Note>> getUserNotes(@PathVariable Long userId) {
-        return ResponseEntity.ok(noteRepository.find....(userId));
+    @GetMapping(path = "/{noteId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    ResponseEntity<Note> getNoteById(@PathVariable Long noteId) {
+        return ResponseEntity.ok(noteService.getNoteById(noteId));
     }
 
 }

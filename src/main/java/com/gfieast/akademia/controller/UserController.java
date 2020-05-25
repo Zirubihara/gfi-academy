@@ -2,9 +2,8 @@ package com.gfieast.akademia.controller;
 
 import java.util.List;
 
-import com.gfieast.akademia.model.Note;
 import com.gfieast.akademia.model.User;
-import com.gfieast.akademia.repository.UserRepository;
+import com.gfieast.akademia.service.UserService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,20 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     ResponseEntity<List<User>> getAllUsers() {
-        return ResponseEntity.ok(userRepository.findAll());
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping(path = "/{login}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    ResponseEntity<List<User>> getUserNotes(@PathVariable String login) {
-        return ResponseEntity.ok(userRepository.findAllByLoginStartsWithOrderByIdAsc(login));
+    @GetMapping(path = "/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    ResponseEntity<User> getUserNotes(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.getUserById(userId));
     }
 
 }

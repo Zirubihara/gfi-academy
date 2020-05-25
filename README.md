@@ -276,3 +276,21 @@ Dopisz w klasie `NoteController` brakującą adnotację i wywołanie nowej metod
 Sprawdź z poziomu swagger-ui poprawność działania kontrolerów.
 
 Pobierz branch **zadanie10**
+
+**Zadanie 10. : Serwisy i obsługa błędów**
+
+Pomiędzy warstwę repozytoriów, a warstwę kontrolerów wprowadzona została warstwa serwisów.
+
+Zostały także utworzone 2 dedykowane wyjątki, które mają za zadanie reprezentować błędy związane z brakiem danych.
+
+Klasa `DedicatedExceptionHandler` posiada adnotację **@ControllerAdvice**, która wskazuje, że będzie ona zapewniać obsługę wyjątków.
+Obecnie klasa obsługuje wyjątek `UserNotFoundException`.
+
+Ćwieczenie.
+
+Uruchom aplikację. Z poziomu swagger-ui, wyślij request do `UserController` w celu wyszukania użytkownika o błędnym id.
+To samo wykonaj przy notatce.
+Sprawdź logi konsoli.
+Dopisz brakującą obsługę wyjątku `NoteNotFoundException` w klasie `DedicatedExceptionHandler`.
+
+Pobierz branch **zadanie11**
