@@ -63,13 +63,6 @@ public class UserService {
         return UserToUserWithNoteRepresentation.convert(dbUser);
     }
 
-    private User mapToUser(UserWithNotesRepresentation source) {
-        return User.builder()
-                .login(source.getLogin())
-                .fullName(source.getFullName())
-                .build();
-    }
-
     private User mapToUser(UserRepresentation source) {
         return User.builder()
                 .login(source.getLogin())

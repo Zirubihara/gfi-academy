@@ -76,6 +76,7 @@ public class NoteService {
         dbNote.setText(noteRepresentation.getText());
         dbNote.setTitle(noteRepresentation.getTitle());
         dbNote.setModificationDate(Instant.now());
+        dbNote = noteRepository.save(dbNote);
         return NoteToRepresentation.convert(dbNote);
     }
 
