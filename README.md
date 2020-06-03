@@ -330,3 +330,17 @@ Aby zapanować nad danymi pobieranymi przez API REST warto używać klas repreze
 - Więcej o bibliotece orika znajdziesz na https://github.com/orika-mapper/orika i http://orika-mapper.github.io/orika-docs/
 
 Pobierz branch **zadanie12** 
+
+Finalna aplikacja została podzielona na 3 moduły.
+
+**gfi-academy-core** jest modułem, który dostarcz pozostałym bibliotekę z funkcjonalnościami aplikacji. Wygenerowany JAR nie jest
+wykonywalny i nie może posłużyć do uruchomienia aplikacji.
+
+**gfi-academy-jar** to moduł, który pozwala na uruchomienie apliakcji jako wykonywalny JAR.
+Po zbudowaniu projektu w katalogu target znajdzie się JAR, który można uruchomić poleceniem
+`java -jar gfi-academy-jar-0.0.1-SNAPSHOT.jar`
+
+**gfi-academy-war** to moduł, który ma za zadanie zbudować archiwum WAR, na potrzeby deploymentu w serwer aplikacyjnych.
+Moduł dostarcza także deskryptor wdrożenia (web.xml), jboss-web.xml - plik konfiguracyjny na potrzeby serwera wildfly(jboss), oraz
+w pliku pom.xml jest generowana konifguracja manifestu. Logging-profile jest potrzeby, aby w serwerze wildfly można było kontrolować 
+logi konkretnej aplikacji. Gotowe archiwum WAR znajduje się w katalogu target po zbudowaniu projektu. 
